@@ -1,0 +1,29 @@
+netcdf mgrid_two {
+dimensions:
+	stringsize = 30 ;
+	external_coil_groups = 2 ;
+	dim_00001 = 1 ;
+	external_coils = 2 ;
+	rad = 9 ;
+	zee = 7 ;
+	phi = 6 ;
+variables:
+	int ir ;
+	int jz ;
+	int kp ;
+	int nfp ;
+	int nextcur ;
+	double rmin ;
+	double zmin ;
+	double rmax ;
+	double zmax ;
+	char coil_group(external_coil_groups, stringsize) ;
+	char mgrid_mode(dim_00001) ;
+	double raw_coil_cur(external_coils) ;
+	double br_001(phi, zee, rad) ;
+	double bp_001(phi, zee, rad) ;
+	double bz_001(phi, zee, rad) ;
+	double br_002(phi, zee, rad) ;
+	double bp_002(phi, zee, rad) ;
+	double bz_002(phi, zee, rad) ;
+}

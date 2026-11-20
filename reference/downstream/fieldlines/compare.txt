@@ -1,0 +1,4 @@
+points per array: R_lines 48002, B_R 491520
+xg_legtrig  field grid rel diff 1.2e-10 | Poincare points: max |dR| 8.3e-04 m, max |dZ| 4.8e-04 m, mismatched-validity points 0
+xg_default  field grid rel diff 3.4e-02 | Poincare points: max |dR| 5.0e-04 m, max |dZ| 2.5e-04 m, mismatched-validity points 0
+metal_ds    field grid rel diff 3.4e-02 | Poincare points: max |dR| 2.1e-04 m, max |dZ| 1.3e-04 m, mismatched-validity points 0

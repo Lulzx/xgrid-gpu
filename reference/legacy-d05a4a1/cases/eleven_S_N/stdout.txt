@@ -1,0 +1,286 @@
+
+ COIL GROUP          :  G00
+ TOTAL COILS IN GROUP:      4 TOTAL FILAMENTS:     96
+ K =    1 (OUT OF    3)
+ K =    2
+ K =    3
+
+ COIL GROUP          :  G01
+ TOTAL COILS IN GROUP:      4 TOTAL FILAMENTS:     96
+ K =    1 (OUT OF    3)
+ K =    2
+ K =    3
+
+ COIL GROUP          :  G02
+ TOTAL COILS IN GROUP:      4 TOTAL FILAMENTS:     96
+ K =    1 (OUT OF    3)
+ K =    2
+ K =    3
+
+ COIL GROUP          :  G03
+ TOTAL COILS IN GROUP:      4 TOTAL FILAMENTS:     96
+ K =    1 (OUT OF    3)
+ K =    2
+ K =    3
+
+ COIL GROUP          :  G04
+ TOTAL COILS IN GROUP:      4 TOTAL FILAMENTS:     96
+ K =    1 (OUT OF    3)
+ K =    2
+ K =    3
+
+ COIL GROUP          :  G05
+ TOTAL COILS IN GROUP:      4 TOTAL FILAMENTS:     96
+ K =    1 (OUT OF    3)
+ K =    2
+ K =    3
+
+ COIL GROUP          :  G06
+ TOTAL COILS IN GROUP:      4 TOTAL FILAMENTS:     96
+ K =    1 (OUT OF    3)
+ K =    2
+ K =    3
+
+ COIL GROUP          :  G07
+ TOTAL COILS IN GROUP:      4 TOTAL FILAMENTS:     96
+ K =    1 (OUT OF    3)
+ K =    2
+ K =    3
+
+ COIL GROUP          :  G08
+ TOTAL COILS IN GROUP:      4 TOTAL FILAMENTS:     96
+ K =    1 (OUT OF    3)
+ K =    2
+ K =    3
+
+ COIL GROUP          :  G09
+ TOTAL COILS IN GROUP:      4 TOTAL FILAMENTS:     96
+ K =    1 (OUT OF    3)
+ K =    2
+ K =    3
+
+ COIL GROUP          :  G10
+ TOTAL COILS IN GROUP:      4 TOTAL FILAMENTS:     96
+ K =    1 (OUT OF    3)
+ K =    2
+ K =    3
+
+********************************************************************************
+Coil group #    1, with group ID G00                           
+
+               Loops     Circles   Other   Total
+ # coils          4         0         0         4
+
+ Filamentary loops, number of filaments:
+      Min     Max      Average          SD 
+      24         24         24.0          0.0
+
+ Filamentary loops, current:
+      Min          Max         Average          SD 
+   1.00000E+04   1.00000E+04   1.00000E+04   0.00E+00
+
+Magnetic field with unit current multiplier, at R,Z=   1.00000E+00   0.00000E+00
+      phi              B . rhat      B . phihat    B . zhat
+    0.00000E+00    2.67032E-03   -1.49078E-19    1.89735E-19
+    1.04720E+00   -1.24066E-04   -4.18758E-04   -3.43519E-06
+    2.09440E+00   -1.24066E-04    4.18758E-04    3.43519E-06
+
+********************************************************************************
+Coil group #    2, with group ID G01                           
+
+               Loops     Circles   Other   Total
+ # coils          4         0         0         4
+
+ Filamentary loops, number of filaments:
+      Min     Max      Average          SD 
+      24         24         24.0          0.0
+
+ Filamentary loops, current:
+      Min          Max         Average          SD 
+  -2.00000E+04  -2.00000E+04  -2.00000E+04   0.00E+00
+
+Magnetic field with unit current multiplier, at R,Z=   1.00000E+00   0.00000E+00
+      phi              B . rhat      B . phihat    B . zhat
+    0.00000E+00   -6.57884E-03   -6.23416E-19    2.98156E-19
+    1.04720E+00    4.84950E-04    1.41584E-03    1.75804E-06
+    2.09440E+00    4.84950E-04   -1.41584E-03   -1.75804E-06
+
+********************************************************************************
+Coil group #    3, with group ID G02                           
+
+               Loops     Circles   Other   Total
+ # coils          4         0         0         4
+
+ Filamentary loops, number of filaments:
+      Min     Max      Average          SD 
+      24         24         24.0          0.0
+
+ Filamentary loops, current:
+      Min          Max         Average          SD 
+   3.00000E+04   3.00000E+04   3.00000E+04   0.00E+00
+
+Magnetic field with unit current multiplier, at R,Z=   1.00000E+00   0.00000E+00
+      phi              B . rhat      B . phihat    B . zhat
+    0.00000E+00    1.08006E-02   -9.75782E-19    6.09864E-19
+    1.04720E+00   -1.13363E-03   -3.10775E-03    2.76936E-05
+    2.09440E+00   -1.13363E-03    3.10775E-03   -2.76936E-05
+
+********************************************************************************
+Coil group #    4, with group ID G03                           
+
+               Loops     Circles   Other   Total
+ # coils          4         0         0         4
+
+ Filamentary loops, number of filaments:
+      Min     Max      Average          SD 
+      24         24         24.0          0.0
+
+ Filamentary loops, current:
+      Min          Max         Average          SD 
+  -4.00000E+04  -4.00000E+04  -4.00000E+04   0.00E+00
+
+Magnetic field with unit current multiplier, at R,Z=   1.00000E+00   0.00000E+00
+      phi              B . rhat      B . phihat    B . zhat
+    0.00000E+00   -1.46712E-02   -3.19840E-18    5.42101E-19
+    1.04720E+00    2.13227E-03    5.65456E-03   -1.21613E-04
+    2.09440E+00    2.13227E-03   -5.65456E-03    1.21613E-04
+
+********************************************************************************
+Coil group #    5, with group ID G04                           
+
+               Loops     Circles   Other   Total
+ # coils          4         0         0         4
+
+ Filamentary loops, number of filaments:
+      Min     Max      Average          SD 
+      24         24         24.0          0.0
+
+ Filamentary loops, current:
+      Min          Max         Average          SD 
+   5.00000E+04   5.00000E+04   5.00000E+04   0.00E+00
+
+Magnetic field with unit current multiplier, at R,Z=   1.00000E+00   0.00000E+00
+      phi              B . rhat      B . phihat    B . zhat
+    0.00000E+00    1.78343E-02    2.05998E-18   -2.43945E-19
+    1.04720E+00   -3.54899E-03   -9.26095E-03    3.36922E-04
+    2.09440E+00   -3.54899E-03    9.26095E-03   -3.36922E-04
+
+********************************************************************************
+Coil group #    6, with group ID G05                           
+
+               Loops     Circles   Other   Total
+ # coils          4         0         0         4
+
+ Filamentary loops, number of filaments:
+      Min     Max      Average          SD 
+      24         24         24.0          0.0
+
+ Filamentary loops, current:
+      Min          Max         Average          SD 
+  -6.00000E+04  -6.00000E+04  -6.00000E+04   0.00E+00
+
+Magnetic field with unit current multiplier, at R,Z=   1.00000E+00   0.00000E+00
+      phi              B . rhat      B . phihat    B . zhat
+    0.00000E+00   -2.01872E-02   -9.75782E-19   -3.52366E-19
+    1.04720E+00    5.44593E-03    1.41731E-02   -7.58391E-04
+    2.09440E+00    5.44593E-03   -1.41731E-02    7.58391E-04
+
+********************************************************************************
+Coil group #    7, with group ID G06                           
+
+               Loops     Circles   Other   Total
+ # coils          4         0         0         4
+
+ Filamentary loops, number of filaments:
+      Min     Max      Average          SD 
+      24         24         24.0          0.0
+
+ Filamentary loops, current:
+      Min          Max         Average          SD 
+   7.00000E+04   7.00000E+04   7.00000E+04   0.00E+00
+
+Magnetic field with unit current multiplier, at R,Z=   1.00000E+00   0.00000E+00
+      phi              B . rhat      B . phihat    B . zhat
+    0.00000E+00    2.17850E-02    2.71051E-18   -4.06576E-19
+    1.04720E+00   -7.85703E-03   -2.06669E-02    1.50650E-03
+    2.09440E+00   -7.85703E-03    2.06669E-02   -1.50650E-03
+
+********************************************************************************
+Coil group #    8, with group ID G07                           
+
+               Loops     Circles   Other   Total
+ # coils          4         0         0         4
+
+ Filamentary loops, number of filaments:
+      Min     Max      Average          SD 
+      24         24         24.0          0.0
+
+ Filamentary loops, current:
+      Min          Max         Average          SD 
+  -8.00000E+04  -8.00000E+04  -8.00000E+04   0.00E+00
+
+Magnetic field with unit current multiplier, at R,Z=   1.00000E+00   0.00000E+00
+      phi              B . rhat      B . phihat    B . zhat
+    0.00000E+00   -2.27531E-02    1.08420E-18   -2.71051E-20
+    1.04720E+00    1.07522E-02    2.90205E-02   -2.74252E-03
+    2.09440E+00    1.07522E-02   -2.90205E-02    2.74252E-03
+
+********************************************************************************
+Coil group #    9, with group ID G08                           
+
+               Loops     Circles   Other   Total
+ # coils          4         0         0         4
+
+ Filamentary loops, number of filaments:
+      Min     Max      Average          SD 
+      24         24         24.0          0.0
+
+ Filamentary loops, current:
+      Min          Max         Average          SD 
+   9.00000E+04   9.00000E+04   9.00000E+04   0.00E+00
+
+Magnetic field with unit current multiplier, at R,Z=   1.00000E+00   0.00000E+00
+      phi              B . rhat      B . phihat    B . zhat
+    0.00000E+00    2.32291E-02   -6.50521E-19    0.00000E+00
+    1.04720E+00   -1.39886E-02   -3.94628E-02    4.66480E-03
+    2.09440E+00   -1.39886E-02    3.94628E-02   -4.66480E-03
+
+********************************************************************************
+Coil group #   10, with group ID G09                           
+
+               Loops     Circles   Other   Total
+ # coils          4         0         0         4
+
+ Filamentary loops, number of filaments:
+      Min     Max      Average          SD 
+      24         24         24.0          0.0
+
+ Filamentary loops, current:
+      Min          Max         Average          SD 
+  -1.00000E+05  -1.00000E+05  -1.00000E+05   0.00E+00
+
+Magnetic field with unit current multiplier, at R,Z=   1.00000E+00   0.00000E+00
+      phi              B . rhat      B . phihat    B . zhat
+    0.00000E+00   -2.33335E-02    8.67362E-19   -8.67362E-19
+    1.04720E+00    1.72590E-02    5.20861E-02   -7.48622E-03
+    2.09440E+00    1.72590E-02   -5.20861E-02    7.48622E-03
+
+********************************************************************************
+Coil group #   11, with group ID G10                           
+
+               Loops     Circles   Other   Total
+ # coils          4         0         0         4
+
+ Filamentary loops, number of filaments:
+      Min     Max      Average          SD 
+      24         24         24.0          0.0
+
+ Filamentary loops, current:
+      Min          Max         Average          SD 
+   1.10000E+05   1.10000E+05   1.10000E+05   0.00E+00
+
+Magnetic field with unit current multiplier, at R,Z=   1.00000E+00   0.00000E+00
+      phi              B . rhat      B . phihat    B . zhat
+    0.00000E+00    2.31605E-02   -4.11997E-18   -4.33681E-19
+    1.04720E+00   -2.00633E-02   -6.67250E-02    1.13808E-02
+    2.09440E+00   -2.00633E-02    6.67250E-02   -1.13808E-02

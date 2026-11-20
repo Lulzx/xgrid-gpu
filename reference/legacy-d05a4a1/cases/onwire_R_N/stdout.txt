@@ -1,0 +1,24 @@
+
+ COIL GROUP          :  Rect
+ TOTAL COILS IN GROUP:      1 TOTAL FILAMENTS:      4
+ K =    1 (OUT OF    2)
+ K =    2
+
+********************************************************************************
+Coil group #    1, with group ID Rect                          
+
+               Loops     Circles   Other   Total
+ # coils          1         0         0         1
+
+ Filamentary loops, number of filaments:
+      Min     Max      Average          SD 
+       4          4          4.0          0.0
+
+ Filamentary loops, current:
+      Min          Max         Average          SD 
+   1.00000E+04   1.00000E+04   1.00000E+04   0.00E+00
+
+Magnetic field with unit current multiplier, at R,Z=   1.00000E+00   0.00000E+00
+      phi              B . rhat      B . phihat    B . zhat
+    0.00000E+00    0.00000E+00   -8.94427E-03    0.00000E+00
+    3.14159E+00   -1.22913E-21   -2.55303E-05    3.90229E-38

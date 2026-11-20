@@ -1,0 +1,44 @@
+netcdf mgrid_w7x {
+dimensions:
+	stringsize = 30 ;
+	external_coil_groups = 7 ;
+	dim_00001 = 1 ;
+	external_coils = 7 ;
+	rad = 33 ;
+	zee = 33 ;
+	phi = 12 ;
+variables:
+	int ir ;
+	int jz ;
+	int kp ;
+	int nfp ;
+	int nextcur ;
+	double rmin ;
+	double zmin ;
+	double rmax ;
+	double zmax ;
+	char coil_group(external_coil_groups, stringsize) ;
+	char mgrid_mode(dim_00001) ;
+	double raw_coil_cur(external_coils) ;
+	double br_001(phi, zee, rad) ;
+	double bp_001(phi, zee, rad) ;
+	double bz_001(phi, zee, rad) ;
+	double br_002(phi, zee, rad) ;
+	double bp_002(phi, zee, rad) ;
+	double bz_002(phi, zee, rad) ;
+	double br_003(phi, zee, rad) ;
+	double bp_003(phi, zee, rad) ;
+	double bz_003(phi, zee, rad) ;
+	double br_004(phi, zee, rad) ;
+	double bp_004(phi, zee, rad) ;
+	double bz_004(phi, zee, rad) ;
+	double br_005(phi, zee, rad) ;
+	double bp_005(phi, zee, rad) ;
+	double bz_005(phi, zee, rad) ;
+	double br_006(phi, zee, rad) ;
+	double bp_006(phi, zee, rad) ;
+	double bz_006(phi, zee, rad) ;
+	double br_007(phi, zee, rad) ;
+	double bp_007(phi, zee, rad) ;
+	double bz_007(phi, zee, rad) ;
+}

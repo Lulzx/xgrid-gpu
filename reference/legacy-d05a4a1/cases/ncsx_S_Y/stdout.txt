@@ -1,0 +1,340 @@
+
+ COIL GROUP          :  ModA
+ TOTAL COILS IN GROUP:      6 TOTAL FILAMENTS:   2400
+ K =    1 (OUT OF   12)
+ K =    2
+ K =    3
+ K =    4
+ K =    5
+ K =    6
+ K =    7
+
+ COIL GROUP          :  ModB
+ TOTAL COILS IN GROUP:      6 TOTAL FILAMENTS:   2400
+ K =    1 (OUT OF   12)
+ K =    2
+ K =    3
+ K =    4
+ K =    5
+ K =    6
+ K =    7
+
+ COIL GROUP          :  ModC
+ TOTAL COILS IN GROUP:      6 TOTAL FILAMENTS:   2400
+ K =    1 (OUT OF   12)
+ K =    2
+ K =    3
+ K =    4
+ K =    5
+ K =    6
+ K =    7
+
+ COIL GROUP          :  PF1
+ TOTAL COILS IN GROUP:      8 TOTAL FILAMENTS:   1536
+ K =    1 (OUT OF   12)
+ K =    2
+ K =    3
+ K =    4
+ K =    5
+ K =    6
+ K =    7
+
+ COIL GROUP          :  PF2
+ TOTAL COILS IN GROUP:      8 TOTAL FILAMENTS:   1536
+ K =    1 (OUT OF   12)
+ K =    2
+ K =    3
+ K =    4
+ K =    5
+ K =    6
+ K =    7
+
+ COIL GROUP          :  PF3
+ TOTAL COILS IN GROUP:      8 TOTAL FILAMENTS:   1536
+ K =    1 (OUT OF   12)
+ K =    2
+ K =    3
+ K =    4
+ K =    5
+ K =    6
+ K =    7
+
+ COIL GROUP          :  PF4
+ TOTAL COILS IN GROUP:     12 TOTAL FILAMENTS:   2304
+ K =    1 (OUT OF   12)
+ K =    2
+ K =    3
+ K =    4
+ K =    5
+ K =    6
+ K =    7
+
+ COIL GROUP          :  PF5
+ TOTAL COILS IN GROUP:      4 TOTAL FILAMENTS:   1536
+ K =    1 (OUT OF   12)
+ K =    2
+ K =    3
+ K =    4
+ K =    5
+ K =    6
+ K =    7
+
+ COIL GROUP          :  PF6
+ TOTAL COILS IN GROUP:      2 TOTAL FILAMENTS:    768
+ K =    1 (OUT OF   12)
+ K =    2
+ K =    3
+ K =    4
+ K =    5
+ K =    6
+ K =    7
+
+ COIL GROUP          :  TF
+ TOTAL COILS IN GROUP:     18 TOTAL FILAMENTS:   2196
+ K =    1 (OUT OF   12)
+ K =    2
+ K =    3
+ K =    4
+ K =    5
+ K =    6
+ K =    7
+
+********************************************************************************
+Coil group #    1, with group ID ModA                          
+
+               Loops     Circles   Other   Total
+ # coils          6         0         0         6
+
+ Filamentary loops, number of filaments:
+      Min     Max      Average          SD 
+     400        400        400.0          0.0
+
+ Filamentary loops, current:
+      Min          Max         Average          SD 
+   6.52272E+05   6.52272E+05   6.52272E+05   1.11E-02
+
+Magnetic field with unit current multiplier, at R,Z=   1.43600E+00   0.00000E+00
+      phi              B . rhat      B . phihat    B . zhat
+    0.00000E+00    8.32667E-17    1.14591E+00    2.29847E-01
+    1.74533E-01   -3.25373E-01    9.29888E-01    1.29011E-01
+    3.49066E-01   -1.93167E-01    6.07764E-01    4.38429E-02
+    5.23599E-01   -7.81662E-02    4.36645E-01    9.21107E-03
+    6.98132E-01   -2.77147E-02    3.24996E-01   -5.75876E-03
+    8.72665E-01   -8.16055E-03    2.62452E-01   -1.04055E-02
+    1.04720E+00   -4.61688E-15    2.42700E-01   -1.12001E-02
+
+********************************************************************************
+Coil group #    2, with group ID ModB                          
+
+               Loops     Circles   Other   Total
+ # coils          6         0         0         6
+
+ Filamentary loops, number of filaments:
+      Min     Max      Average          SD 
+     400        400        400.0          0.0
+
+ Filamentary loops, current:
+      Min          Max         Average          SD 
+   6.51869E+05   6.51869E+05   6.51869E+05   4.08E-03
+
+Magnetic field with unit current multiplier, at R,Z=   1.43600E+00   0.00000E+00
+      phi              B . rhat      B . phihat    B . zhat
+    0.00000E+00   -4.51028E-17    4.45208E-01    1.42252E-01
+    1.74533E-01   -4.43194E-02    5.96061E-01    1.60684E-01
+    3.49066E-01   -2.93405E-01    6.60996E-01    7.05112E-02
+    5.23599E-01   -2.10512E-01    5.87396E-01    5.27446E-03
+    6.98132E-01   -8.87685E-02    5.23372E-01   -1.66518E-02
+    8.72665E-01   -2.66313E-02    4.59211E-01   -4.04177E-02
+    1.04720E+00    3.20599E-15    4.30747E-01   -5.43452E-02
+
+********************************************************************************
+Coil group #    3, with group ID ModC                          
+
+               Loops     Circles   Other   Total
+ # coils          6         0         0         6
+
+ Filamentary loops, number of filaments:
+      Min     Max      Average          SD 
+     400        400        400.0          0.0
+
+ Filamentary loops, current:
+      Min          Max         Average          SD 
+   5.37744E+05   5.37744E+05   5.37744E+05        NaN
+
+Magnetic field with unit current multiplier, at R,Z=   1.43600E+00   0.00000E+00
+      phi              B . rhat      B . phihat    B . zhat
+    0.00000E+00   -1.85615E-16    1.77574E-01    4.87080E-02
+    1.74533E-01   -2.43292E-02    2.05553E-01    5.11694E-02
+    3.49066E-01   -7.33019E-02    2.99096E-01    4.99012E-02
+    5.23599E-01   -1.58489E-01    4.40987E-01    2.18382E-02
+    6.98132E-01   -1.81375E-01    5.88984E-01   -7.99914E-03
+    8.72665E-01   -1.05206E-01    7.02483E-01   -4.37055E-03
+    1.04720E+00    1.04204E-14    7.40594E-01    5.04944E-03
+
+********************************************************************************
+Coil group #    4, with group ID PF1                           
+
+               Loops     Circles   Other   Total
+ # coils          8         0         0         8
+
+ Filamentary loops, number of filaments:
+      Min     Max      Average          SD 
+     192        192        192.0          0.0
+
+ Filamentary loops, current:
+      Min          Max         Average          SD 
+   2.50000E-07   2.50000E-07   2.50000E-07   2.10E-15
+
+Magnetic field with unit current multiplier, at R,Z=   1.43600E+00   0.00000E+00
+      phi              B . rhat      B . phihat    B . zhat
+    0.00000E+00   -2.46519E-31    3.28429E-47   -8.92914E-15
+    1.74533E-01   -4.96250E-32    2.49217E-33   -8.92914E-15
+    3.49066E-01   -1.03179E-31    7.69051E-32   -8.92914E-15
+    5.23599E-01    2.01608E-31   -4.52347E-32   -8.92914E-15
+    6.98132E-01   -2.26613E-31    1.90151E-31   -8.92914E-15
+    8.72665E-01    1.42613E-31   -1.69960E-31   -8.92914E-15
+    1.04720E+00    1.27653E-31    1.73330E-31   -8.92914E-15
+
+********************************************************************************
+Coil group #    5, with group ID PF2                           
+
+               Loops     Circles   Other   Total
+ # coils          8         0         0         8
+
+ Filamentary loops, number of filaments:
+      Min     Max      Average          SD 
+     192        192        192.0          0.0
+
+ Filamentary loops, current:
+      Min          Max         Average          SD 
+   2.50000E-07   2.50000E-07   2.50000E-07   2.10E-15
+
+Magnetic field with unit current multiplier, at R,Z=   1.43600E+00   0.00000E+00
+      phi              B . rhat      B . phihat    B . zhat
+    0.00000E+00    0.00000E+00    4.37906E-47   -2.92367E-15
+    1.74533E-01   -5.78376E-31    1.27016E-31   -2.92367E-15
+    3.49066E-01    8.43145E-32    2.31652E-31   -2.92367E-15
+    5.23599E-01   -2.20097E-31    1.32109E-32   -2.92367E-15
+    6.98132E-01   -6.33838E-32   -7.55378E-32   -2.92367E-15
+    8.72665E-01   -1.77997E-31    3.65535E-31   -2.92367E-15
+    1.04720E+00   -1.70793E-31   -9.86076E-32   -2.92367E-15
+
+********************************************************************************
+Coil group #    6, with group ID PF3                           
+
+               Loops     Circles   Other   Total
+ # coils          8         0         0         8
+
+ Filamentary loops, number of filaments:
+      Min     Max      Average          SD 
+     192        192        192.0          0.0
+
+ Filamentary loops, current:
+      Min          Max         Average          SD 
+   2.80950E+04   2.80950E+04   2.80950E+04        NaN
+
+Magnetic field with unit current multiplier, at R,Z=   1.43600E+00   0.00000E+00
+      phi              B . rhat      B . phihat    B . zhat
+    0.00000E+00    2.71051E-20   -1.20371E-35    1.17880E-04
+    1.74533E-01   -1.33466E-20    2.35337E-21    1.17880E-04
+    3.49066E-01    8.09997E-21   -1.73704E-20    1.17880E-04
+    5.23599E-01   -1.85131E-20   -4.96057E-21    1.17880E-04
+    6.98132E-01   -8.71140E-21   -1.03818E-20    1.17880E-04
+    8.72665E-01   -7.04095E-21    2.94751E-20    1.17880E-04
+    1.04720E+00    1.57244E-21    2.43815E-20    1.17880E-04
+
+********************************************************************************
+Coil group #    7, with group ID PF4                           
+
+               Loops     Circles   Other   Total
+ # coils         12         0         0        12
+
+ Filamentary loops, number of filaments:
+      Min     Max      Average          SD 
+     192        192        192.0          0.0
+
+ Filamentary loops, current:
+      Min          Max         Average          SD 
+  -5.48049E+04  -5.48049E+04  -5.48049E+04   4.69E-04
+
+Magnetic field with unit current multiplier, at R,Z=   1.43600E+00   0.00000E+00
+      phi              B . rhat      B . phihat    B . zhat
+    0.00000E+00    3.25261E-19    2.10649E-35   -4.10945E-03
+    1.74533E-01   -5.15038E-19    2.00908E-19   -4.10945E-03
+    3.49066E-01    4.26068E-19   -9.73868E-20   -4.10945E-03
+    5.23599E-01   -8.13152E-20   -1.40842E-19   -4.10945E-03
+    6.98132E-01   -3.18855E-19    1.26019E-19   -4.10945E-03
+    8.72665E-01   -5.27929E-19    1.23145E-19   -4.10945E-03
+    1.04720E+00    2.14894E-19    6.14729E-20   -4.10945E-03
+
+********************************************************************************
+Coil group #    8, with group ID PF5                           
+
+               Loops     Circles   Other   Total
+ # coils          4         0         0         4
+
+ Filamentary loops, number of filaments:
+      Min     Max      Average          SD 
+     384        384        384.0          0.0
+
+ Filamentary loops, current:
+      Min          Max         Average          SD 
+   3.01229E+04   3.01229E+04   3.01229E+04   4.39E-05
+
+Magnetic field with unit current multiplier, at R,Z=   1.43600E+00   0.00000E+00
+      phi              B . rhat      B . phihat    B . zhat
+    0.00000E+00    0.00000E+00    0.00000E+00    1.51924E-02
+    1.74533E-01    9.41349E-21    5.33865E-20    1.51924E-02
+    3.49066E-01   -4.07527E-19    1.48328E-19    1.51924E-02
+    5.23599E-01   -3.75579E-19    2.16840E-19    1.51924E-02
+    6.98132E-01    1.66109E-19   -1.39382E-19    1.51924E-02
+    8.72665E-01    0.00000E+00    0.00000E+00    1.51924E-02
+    1.04720E+00    0.00000E+00    0.00000E+00    1.51924E-02
+
+********************************************************************************
+Coil group #    9, with group ID PF6                           
+
+               Loops     Circles   Other   Total
+ # coils          2         0         0         2
+
+ Filamentary loops, number of filaments:
+      Min     Max      Average          SD 
+     384        384        384.0          0.0
+
+ Filamentary loops, current:
+      Min          Max         Average          SD 
+   9.42409E+04   9.42409E+04   9.42409E+04   8.31E-04
+
+Magnetic field with unit current multiplier, at R,Z=   1.43600E+00   0.00000E+00
+      phi              B . rhat      B . phihat    B . zhat
+    0.00000E+00    0.00000E+00    0.00000E+00    3.87568E-02
+    1.74533E-01    0.00000E+00    0.00000E+00    3.87568E-02
+    3.49066E-01    0.00000E+00    0.00000E+00    3.87568E-02
+    5.23599E-01    0.00000E+00    0.00000E+00    3.87568E-02
+    6.98132E-01    0.00000E+00    0.00000E+00    3.87568E-02
+    8.72665E-01    0.00000E+00    0.00000E+00    3.87568E-02
+    1.04720E+00    0.00000E+00    0.00000E+00    3.87568E-02
+
+********************************************************************************
+Coil group #   10, with group ID TF                            
+
+               Loops     Circles   Other   Total
+ # coils         18         0         0        18
+
+ Filamentary loops, number of filaments:
+      Min     Max      Average          SD 
+     122        122        122.0          0.0
+
+ Filamentary loops, current:
+      Min          Max         Average          SD 
+   4.55139E+04   4.55139E+04   4.55139E+04        NaN
+
+Magnetic field with unit current multiplier, at R,Z=   1.43600E+00   0.00000E+00
+      phi              B . rhat      B . phihat    B . zhat
+    0.00000E+00    4.33681E-19    1.14100E-01    1.65388E-17
+    1.74533E-01    2.44644E-16    1.14103E-01    1.33054E-17
+    3.49066E-01   -2.16866E-17    1.14100E-01    2.75158E-17
+    5.23599E-01   -1.00806E-15    1.14103E-01    7.12343E-17
+    6.98132E-01   -1.97301E-15    1.14100E-01    1.38102E-16
+    8.72665E-01   -2.09533E-15    1.14103E-01    1.92344E-16
+    1.04720E+00   -1.39181E-15    1.14100E-01    1.97326E-16

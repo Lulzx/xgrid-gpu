@@ -1,0 +1,21 @@
+
+ COIL GROUP          :  poly
+ TOTAL COILS IN GROUP:      1 TOTAL FILAMENTS:  10000
+
+********************************************************************************
+Coil group #    1, with group ID poly                          
+
+               Loops     Circles   Other   Total
+ # coils          1         0         0         1
+
+ Filamentary loops, number of filaments:
+      Min     Max      Average          SD 
+   10000      10000      10000.0          0.0
+
+ Filamentary loops, current:
+      Min          Max         Average          SD 
+   1.00000E+03   1.00000E+03   1.00000E+03   0.00E+00
+
+Magnetic field with unit current multiplier, at R,Z=   1.00000E+00   0.00000E+00
+      phi              B . rhat      B . phihat    B . zhat
+    0.00000E+00    0.00000E+00    0.00000E+00    9.00504E-04

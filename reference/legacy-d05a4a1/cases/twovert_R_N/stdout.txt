@@ -1,0 +1,50 @@
+  WARNING: bsc_construct: one straight  filament for coil: ID #00001
+  (this is a straight coil filament)
+
+ COIL GROUP          :  Loop
+ TOTAL COILS IN GROUP:      1 TOTAL FILAMENTS:     16
+ K =    1 (OUT OF    2)
+ K =    2
+
+ COIL GROUP          :  Line
+ TOTAL COILS IN GROUP:      1 TOTAL FILAMENTS:      1
+ K =    1 (OUT OF    2)
+ K =    2
+
+********************************************************************************
+Coil group #    1, with group ID Loop                          
+
+               Loops     Circles   Other   Total
+ # coils          1         0         0         1
+
+ Filamentary loops, number of filaments:
+      Min     Max      Average          SD 
+      16         16         16.0          0.0
+
+ Filamentary loops, current:
+      Min          Max         Average          SD 
+   1.00000E+04   1.00000E+04   1.00000E+04   0.00E+00
+
+Magnetic field with unit current multiplier, at R,Z=   1.00000E+00   0.00000E+00
+      phi              B . rhat      B . phihat    B . zhat
+    0.00000E+00   -8.59862E-04   -1.03883E-19    2.37087E-03
+    3.14159E+00   -8.59862E-04    1.91555E-19    2.37087E-03
+
+********************************************************************************
+Coil group #    2, with group ID Line                          
+
+               Loops     Circles   Other   Total
+ # coils          1         0         0         1
+
+ Filamentary loops, number of filaments:
+      Min     Max      Average          SD 
+       1          1          1.0          0.0
+
+ Filamentary loops, current:
+      Min          Max         Average          SD 
+   2.00000E+04   2.00000E+04   2.00000E+04   0.00E+00
+
+Magnetic field with unit current multiplier, at R,Z=   1.00000E+00   0.00000E+00
+      phi              B . rhat      B . phihat    B . zhat
+    0.00000E+00    0.00000E+00    3.79473E-03    0.00000E+00
+    3.14159E+00    0.00000E+00    3.79473E-03    0.00000E+00

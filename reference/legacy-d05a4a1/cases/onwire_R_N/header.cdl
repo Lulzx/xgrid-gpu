@@ -1,0 +1,25 @@
+netcdf mgrid_onwire {
+dimensions:
+	dim_00030 = 30 ;
+	dim_00001 = 1 ;
+	external_coils = 1 ;
+	rad = 5 ;
+	zee = 5 ;
+	phi = 2 ;
+variables:
+	int ir ;
+	int jz ;
+	int kp ;
+	int nfp ;
+	int nextcur ;
+	double rmin ;
+	double zmin ;
+	double rmax ;
+	double zmax ;
+	char coil_group(dim_00030) ;
+	char mgrid_mode(dim_00001) ;
+	double raw_coil_cur(external_coils) ;
+	double br_001(phi, zee, rad) ;
+	double bp_001(phi, zee, rad) ;
+	double bz_001(phi, zee, rad) ;
+}

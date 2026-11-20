@@ -1,0 +1,26 @@
+
+ COIL GROUP          :  AVeryLongGroupNameThatExceedsT
+ TOTAL COILS IN GROUP:      4 TOTAL FILAMENTS:     96
+ K =    1 (OUT OF    4)
+ K =    2
+ K =    3
+
+********************************************************************************
+Coil group #    1, with group ID AVeryLongGroupNameThatExceedsT
+
+               Loops     Circles   Other   Total
+ # coils          4         0         0         4
+
+ Filamentary loops, number of filaments:
+      Min     Max      Average          SD 
+      24         24         24.0          0.0
+
+ Filamentary loops, current:
+      Min          Max         Average          SD 
+  -3.00000E+04  -3.00000E+04  -3.00000E+04   0.00E+00
+
+Magnetic field with unit current multiplier, at R,Z=   1.00000E+00   0.00000E+00
+      phi              B . rhat      B . phihat    B . zhat
+    0.00000E+00   -1.06880E-02    0.00000E+00   -4.20128E-19
+    7.85398E-01    3.74002E-03    1.36906E-02   -1.80165E-03
+    1.57080E+00    1.16544E-03   -3.62318E-19    5.96311E-19

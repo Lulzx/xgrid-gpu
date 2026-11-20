@@ -1,0 +1,56 @@
+
+ COIL GROUP          :  ModA
+ TOTAL COILS IN GROUP:      4 TOTAL FILAMENTS:     96
+ K =    1 (OUT OF    6)
+ K =    2
+ K =    3
+ K =    4
+
+ COIL GROUP          :  PF1
+ TOTAL COILS IN GROUP:      4 TOTAL FILAMENTS:    160
+ K =    1 (OUT OF    6)
+ K =    2
+ K =    3
+ K =    4
+
+********************************************************************************
+Coil group #    1, with group ID ModA                          
+
+               Loops     Circles   Other   Total
+ # coils          4         0         0         4
+
+ Filamentary loops, number of filaments:
+      Min     Max      Average          SD 
+      24         24         24.0          0.0
+
+ Filamentary loops, current:
+      Min          Max         Average          SD 
+   1.00000E+05   1.00000E+05   1.00000E+05   0.00E+00
+
+Magnetic field with unit current multiplier, at R,Z=   1.00000E+00   0.00000E+00
+      phi              B . rhat      B . phihat    B . zhat
+    0.00000E+00    3.56266E-02   -6.93889E-18   -3.25261E-19
+    5.23599E-01   -6.29306E-03   -8.58793E-02    2.41122E-02
+    1.04720E+00   -7.61233E-03   -1.94957E-02    8.32279E-04
+    1.57080E+00   -3.88480E-03    6.29487E-19   -2.05998E-18
+
+********************************************************************************
+Coil group #    2, with group ID PF1                           
+
+               Loops     Circles   Other   Total
+ # coils          4         0         0         4
+
+ Filamentary loops, number of filaments:
+      Min     Max      Average          SD 
+      40         40         40.0          0.0
+
+ Filamentary loops, current:
+      Min          Max         Average          SD 
+  -2.00000E+04   5.00000E+03  -7.50000E+03   1.25E+04
+
+Magnetic field with unit current multiplier, at R,Z=   1.00000E+00   0.00000E+00
+      phi              B . rhat      B . phihat    B . zhat
+    0.00000E+00   -1.88342E-04    0.00000E+00    0.00000E+00
+    5.23599E-01   -1.88342E-04   -8.33035E-18    3.52366E-19
+    1.04720E+00   -1.88342E-04    8.07275E-18   -1.89735E-19
+    1.57080E+00   -1.88342E-04   -1.98297E-19    5.42101E-20

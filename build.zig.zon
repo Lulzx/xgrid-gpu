@@ -1,0 +1,8 @@
+.{
+    .name = .xgrid_gpu,
+    .version = "0.2.2",
+    .fingerprint = 0x9e44acc8572db55d,
+    .minimum_zig_version = "0.17.1",
+    .dependencies = .{},
+    .paths = .{ "build.zig", "build.zig.zon", "src", "tests" },
+}

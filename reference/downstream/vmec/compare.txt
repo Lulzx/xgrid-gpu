@@ -1,0 +1,18 @@
+ier_flag: {'legacy': 0, 'xg_legtrig': 0, 'xg_default': 0}
+quantity     legacy value (summary)   xg legacy-trig   xg default   (max |diff| / max |legacy|)
+iotaf      axis 0.35200, edge 0.65510          9.9e-10      4.1e-08
+volume_p                    2.96253          3.4e-12      1.0e-08
+raxis_cc                -1.6533e-05          3.9e-11      3.1e-09
+zaxis_cs                9.04193e-06          1.5e-09      1.8e-08
+rmnc                   -7.47008e-05          8.4e-11      1.5e-08
+zmns                    2.67546e-05          2.8e-10      4.3e-08
+bmnc                    0.000199185          2.4e-09      1.4e-08
+b0                          1.43889          7.0e-11      1.8e-09
+wb                        0.0929538          4.8e-11      1.0e-10
+betatotal                 0.0408608          6.4e-11      7.6e-09
+rmax_surf                   1.77722          7.9e-11      1.5e-08
+rmin_surf                   1.02281          1.4e-10      5.3e-08
+zmax_surf                  0.639998          1.6e-10      4.6e-09
+aspect                      4.46919          4.8e-11      6.1e-09
+metal_ds: ier_flag 0, worst relative difference from legacy run 8.7e-08 (iotaf)
+metal_fp32: ier_flag 0, worst relative difference from legacy run 3.2e-06 (zmns)

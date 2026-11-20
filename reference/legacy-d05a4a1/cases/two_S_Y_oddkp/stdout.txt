@@ -1,0 +1,52 @@
+
+ COIL GROUP          :  ModA
+ TOTAL COILS IN GROUP:      4 TOTAL FILAMENTS:     96
+ K =    1 (OUT OF    5)
+ K =    2
+ K =    3
+
+ COIL GROUP          :  PF1
+ TOTAL COILS IN GROUP:      4 TOTAL FILAMENTS:    160
+ K =    1 (OUT OF    5)
+ K =    2
+ K =    3
+
+********************************************************************************
+Coil group #    1, with group ID ModA                          
+
+               Loops     Circles   Other   Total
+ # coils          4         0         0         4
+
+ Filamentary loops, number of filaments:
+      Min     Max      Average          SD 
+      24         24         24.0          0.0
+
+ Filamentary loops, current:
+      Min          Max         Average          SD 
+   1.00000E+05   1.00000E+05   1.00000E+05   0.00E+00
+
+Magnetic field with unit current multiplier, at R,Z=   1.00000E+00   0.00000E+00
+      phi              B . rhat      B . phihat    B . zhat
+    0.00000E+00    3.56266E-02   -6.93889E-18   -3.25261E-19
+    6.28319E-01   -1.20286E-02   -7.03464E-02    1.51252E-02
+    1.25664E+00   -5.08788E-03   -9.04319E-03    5.02932E-05
+
+********************************************************************************
+Coil group #    2, with group ID PF1                           
+
+               Loops     Circles   Other   Total
+ # coils          4         0         0         4
+
+ Filamentary loops, number of filaments:
+      Min     Max      Average          SD 
+      40         40         40.0          0.0
+
+ Filamentary loops, current:
+      Min          Max         Average          SD 
+  -2.00000E+04   5.00000E+03  -7.50000E+03   1.25E+04
+
+Magnetic field with unit current multiplier, at R,Z=   1.00000E+00   0.00000E+00
+      phi              B . rhat      B . phihat    B . zhat
+    0.00000E+00   -1.88342E-04    0.00000E+00    0.00000E+00
+    6.28319E-01   -1.88342E-04    9.56778E-20    4.33681E-19
+    1.25664E+00   -1.88342E-04   -5.09512E-19   -9.48677E-20

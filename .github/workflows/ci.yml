@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    name: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: mlugg/setup-zig@v2.2.1
+        with:
+          version: 0.17.1
+
+      - name: Build
+        run: zig build --release=fast
+
+      - name: Unit tests
+        run: zig build test --release=safe --summary all
+
+      - name: Parity with legacy xgrid (CPU backend)
+        run: tests/run_reference.sh
+
+      - name: CUDA backend through the mock driver
+        run: |
+          lib=$(ls zig-out/lib/libcuda_mock.* | head -1)
+          XGRID_LIBCUDA=$PWD/$lib tests/run_gpu.sh cuda
+
+      # Hosted macOS runners expose a paravirtual GPU whose Metal support
+      # varies, so this step reports but does not gate.
+      - name: Metal backend
+        if: runner.os == 'macOS'
+        continue-on-error: true
+        run: tests/run_gpu.sh metal
