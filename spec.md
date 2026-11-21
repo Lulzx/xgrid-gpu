@@ -419,7 +419,7 @@ xgrid-gpu/
 └── README.md
 ```
 
-Unit tests live beside the code they test (`zig build test --release=safe`, as CI runs them; see Q6 for Debug builds), including the analytical checks of §7.1 in `cpu_ref.zig`.
+Unit tests live beside the code they test (`zig build test`; CI runs them with `--release=safe`), including the analytical checks of §7.1 in `cpu_ref.zig`.
 
 **Releasing.** Set the version in `build.zig.zon` and `pub const version` in `src/main.zig`, move the "Unreleased" entries in §10 under the new version, commit and push, wait for CI, then tag and push the tag (`git tag -a vX.Y.Z -m "xgrid-gpu X.Y.Z" && git push origin vX.Y.Z`). `release.yml` reruns the checks, builds `xgrid-gpu-linux-x86_64`, `xgrid-gpu-linux-aarch64` and `xgrid-gpu-macos-arm64`, refuses to publish if the macOS binary's `--version` does not match the tag, and publishes them with `SHA256SUMS`. The README's download command uses `releases/latest`, so it follows the newest release. 0.9.0 was released this way.
 
@@ -579,7 +579,6 @@ Option 2 is the likely candidate if the default changes; option 1 needs no work.
 | Q3 | Metal results are from one machine (M4 Pro). Other Apple GPUs are unmeasured. | Whether `auto` should ever prefer Metal. |
 | Q4 | Quoted group names with spaces are parsed as one item here; legacy's handling was not run. Is `coils.NCSX` identical to `coils.c09r00`? Is the MPI build of legacy in scope for the benchmark? | Minor parity and benchmark details. |
 | Q5 | CUDA start-up takes 0.6–0.7 s on the A100 (setup, which includes creating the context and loading the PTX), against a 0.17 s `fp64` kernel for NCSX; the 349 MB write adds about 0.36 s (§7.5). Not yet broken down: context creation, the driver's PTX JIT (whose cache should make later runs cheaper, but run 2 was only 0.1 s faster), and the startup self-test. | Now the largest share of end-to-end time on data-centre GPUs. |
-| Q6 | In a Debug build (`zig build test` without `--release`), the unit test `netcdf3.test.truncated and corrupt files are rejected, not trusted` is killed by the OS (SIGKILL); the other 13 pass, and all 14 pass in `--release=safe` and `--release=fast`. Present at 0.9.0; cause not investigated. CI and the README use `--release=safe`. | Contributors running the default `zig build test` see a failure. |
 
 Resolved in 0.9.0: W7-X parity case added (from simsopt's published coil data); downstream gate passed with VMEC and FIELDLINES; write/compute overlap implemented; tiling decided against.
 
@@ -602,7 +601,8 @@ Resolved in 0.2.2: floor guard, two-line coils and more than 99 groups confirmed
 * `tools/colab_cuda.ipynb`, runnable in the browser or with the Colab CLI (README); executed A100 and T4 notebooks in `reference/nvidia/`.
 * `auto` on cards with reduced `fp64` rate: options written up in §8; behaviour unchanged.
 * CuMetal compatibility tested and its blockers recorded (§4.5).
-* Known issues recorded: CUDA start-up time (Q5), Debug-build unit test (Q6).
+* Known issue recorded: CUDA start-up time (Q5).
+* NetCDF reader: header counts (dimensions, variables, dimensions per variable) are checked against the bytes left before anything is allocated. A corrupt count used to request tens of GB; Release builds survived because the memory was never touched, Debug builds were killed by the OS in the unit tests. Regression test added.
 * MIT licence; README speedup column and download section.
 
 ### 0.9.0

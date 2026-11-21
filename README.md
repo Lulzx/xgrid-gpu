@@ -55,7 +55,7 @@ frameworks (macOS); an NVIDIA driver, if present, is loaded at run time.
 
 ```sh
 zig build --release=fast        # zig-out/bin/xgrid-gpu, compare_mgrid, lib/libcuda_mock
-zig build test --release=safe   # unit tests, including analytical field checks and fuzzing
+zig build test                  # unit tests, including analytical field checks and fuzzing
 tests/run_reference.sh          # CPU backend against legacy outputs in reference/
 tests/run_gpu.sh metal          # Metal against the CPU backend (macOS)
 tests/run_gpu.sh cuda           # CUDA against the CPU backend (needs an NVIDIA GPU, or:)

@@ -260,6 +260,13 @@ const Cursor = struct {
         defer c.pos += 8;
         return std.mem.readInt(u64, c.b[c.pos..][0..8], .big);
     }
+    /// Rejects a count of header entries that could not fit in the bytes
+    /// left, each entry taking at least `min_bytes`. Checked before
+    /// allocating, so a corrupt count cannot request gigabytes.
+    fn count(c: *Cursor, n: u32, min_bytes: usize) ReadError!u32 {
+        if (n > (c.b.len - c.pos) / min_bytes) return error.Truncated;
+        return n;
+    }
     fn name(c: *Cursor) ReadError![]const u8 {
         const n = try c.u32be();
         if (c.pos + padded(n) > c.b.len) return error.Truncated;
@@ -290,7 +297,9 @@ pub fn parse(arena: Allocator, bytes: []const u8) ReadError!File {
     var c: Cursor = .{ .b = bytes, .pos = 4 };
     const numrecs = try c.u32be();
     const dtag = try c.u32be();
-    const nd = try c.u32be();
+    // Minimum sizes: dimension = name length + size (8 bytes); variable =
+    // name length, ndims, attribute tag and count, type, vsize, begin (28).
+    const nd = try c.count(try c.u32be(), 8);
     const dim_names = try arena.alloc([]const u8, if (dtag == NC_DIMENSION) nd else 0);
     const dim_sizes = try arena.alloc(u32, dim_names.len);
     for (dim_names, dim_sizes) |*n, *s| {
@@ -301,11 +310,11 @@ pub fn parse(arena: Allocator, bytes: []const u8) ReadError!File {
     const ng = try c.u32be();
     if (gtag == NC_ATTRIBUTE) try c.skipAtts(ng);
     const vtag = try c.u32be();
-    const nv = try c.u32be();
+    const nv = try c.count(try c.u32be(), 28);
     const vars = try arena.alloc(Var, if (vtag == NC_VARIABLE) nv else 0);
     for (vars) |*v| {
         v.name = try c.name();
-        const ndims = try c.u32be();
+        const ndims = try c.count(try c.u32be(), 4);
         v.dim_ids = try arena.alloc(u32, ndims);
         v.shape = try arena.alloc(u32, ndims);
         for (v.dim_ids, v.shape) |*d, *s| {
@@ -368,6 +377,21 @@ test "truncated and corrupt files are rejected, not trusted" {
         } else |_| {}
         copy[at] = old;
     }
+}
+
+test "corrupt counts are rejected before allocating" {
+    // A count of 0xFFFFFFFF used to size an allocation of tens of GB before
+    // the bytes behind it were checked (killed by the OS in Debug builds).
+    var arena_state = std.heap.ArenaAllocator.init(std.testing.allocator);
+    defer arena_state.deinit();
+    const a = arena_state.allocator();
+    const l = try build(a, .{ .ir = 2, .jz = 2, .kp = 2, .nfp = 1, .rmin = 1, .zmin = -1, .rmax = 2, .zmax = 1, .mode = 'R', .group_names = &.{"A"}, .group_current = &.{1} });
+    const full = try a.alloc(u8, @intCast(l.total_bytes));
+    @memset(full, 0);
+    @memcpy(full[0..l.prefix.len], l.prefix);
+    // Bytes 12..16 hold the dimension count (after magic, numrecs, tag).
+    std.mem.writeInt(u32, full[12..16], 0xFFFF_FFFF, .big);
+    try std.testing.expectError(error.Truncated, parse(std.testing.failing_allocator, full));
 }
 
 test "written header parses back" {
