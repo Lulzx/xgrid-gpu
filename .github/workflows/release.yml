@@ -1,0 +1,47 @@
+name: Release
+
+# Push a tag such as v0.9.0 to build the binaries and publish a GitHub release.
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    # macOS can build all three targets: Linux is cross-compiled against
+    # glibc 2.17, macOS needs the SDK that only a macOS runner has.
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: mlugg/setup-zig@v2.2.1
+        with:
+          version: 0.17.1
+
+      - name: Check
+        run: |
+          zig build --release=fast
+          zig build test --release=safe
+          tests/run_reference.sh
+          XGRID_LIBCUDA=$PWD/zig-out/lib/libcuda_mock.dylib tests/run_gpu.sh cuda
+
+      - name: Build
+        run: |
+          mkdir dist
+          build() { # build <zig target> <asset name>
+            zig build --release=fast -Dtarget="$1" --prefix "out/$2"
+            cp "out/$2/bin/xgrid-gpu" "dist/$2"
+          }
+          build x86_64-linux-gnu.2.17 xgrid-gpu-linux-x86_64
+          build aarch64-linux-gnu.2.17 xgrid-gpu-linux-aarch64
+          build aarch64-macos.13.0 xgrid-gpu-macos-arm64
+          dist/xgrid-gpu-macos-arm64 --version | grep -qx "xgrid-gpu ${GITHUB_REF_NAME#v}"
+          cd dist && shasum -a 256 xgrid-gpu-* > SHA256SUMS && cat SHA256SUMS
+
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" dist/* --verify-tag --title "xgrid-gpu ${GITHUB_REF_NAME#v}" \
+            --notes "Prebuilt binaries. Linux builds need glibc 2.17 or newer (an NVIDIA driver, if present, is loaded at run time); the macOS build needs macOS 13 or newer on Apple silicon. See the README for usage and SHA256SUMS to verify downloads."

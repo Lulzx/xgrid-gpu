@@ -10,19 +10,33 @@ Status: release candidate (0.9.0). The CPU backend (fp64) and the Apple Metal ba
 (double-single and single precision) pass every gate, including free-boundary VMEC and
 FIELDLINES runs on the output. The CUDA backend (fp64, double-single, single) passes every gate
 through a mock driver but **has not yet been run on an NVIDIA GPU**. See [spec.md](spec.md) for
-the design, measurements and open questions.
+the design, measurements and open questions. To run the CUDA gate and benchmark on a Colab GPU,
+open [`tools/colab_cuda.ipynb`](https://colab.research.google.com/github/Lulzx/xgrid-gpu/blob/main/tools/colab_cuda.ipynb).
 
 201 x 201 x 36 grid, stellarator symmetry, Apple M4 Pro, end to end:
 
-| Program | NCSX | W7-X | Difference from fp64 |
-| --- | --- | --- | --- |
-| legacy `xgrid`, one process | 79 s | 71 s | |
-| `xgrid-gpu`, CPU, 12 threads (default on macOS) | 2.1 s | 1.9 s | reference |
-| `xgrid-gpu --backend metal` (double-single) | 2.3 s | 2.1 s | up to 4e-11 |
-| `xgrid-gpu --precision fp32` (Metal) | 0.37 s | 0.35 s | up to 1e-3 |
+| Program | NCSX | W7-X | Speedup (NCSX / W7-X) | Difference from fp64 |
+| --- | --- | --- | --- | --- |
+| legacy `xgrid`, one process | 79 s | 71 s | 1x | |
+| `xgrid-gpu`, CPU, 12 threads (default on macOS) | 2.1 s | 1.9 s | 38x / 37x | reference |
+| `xgrid-gpu --backend metal` (double-single) | 2.3 s | 2.1 s | 34x / 34x | up to 4e-11 |
+| `xgrid-gpu --precision fp32` (Metal) | 0.37 s | 0.35 s | 210x / 200x | up to 1e-3 |
 
 On Apple silicon the GPU in double-single is no faster than the CPU in fp64, so the CPU is the
 default; single precision is for quick exploratory grids.
+
+## Download
+
+Single binaries, no dependencies beyond libc (Linux, glibc 2.17 or newer) or the system
+frameworks (macOS 13 or newer, Apple silicon):
+
+```sh
+curl -LO https://github.com/Lulzx/xgrid-gpu/releases/latest/download/xgrid-gpu-linux-x86_64
+chmod +x xgrid-gpu-linux-x86_64 && ./xgrid-gpu-linux-x86_64 --version
+```
+
+Also `xgrid-gpu-linux-aarch64` and `xgrid-gpu-macos-arm64`; checksums in `SHA256SUMS` on the
+[releases page](https://github.com/Lulzx/xgrid-gpu/releases).
 
 ## Build and test
 
@@ -82,6 +96,7 @@ but meaningless, as it is in legacy.
   the original draft, kept for comparison.
 - `src/`, `kernels/`: the program and its Metal and CUDA kernels.
 - `tests/`: comparison tool, gate scripts and the mock CUDA driver.
+- `tools/colab_cuda.ipynb`: CUDA gate and benchmark on a Google Colab GPU.
 - `reference/`: legacy `xgrid` outputs at a pinned STELLOPT commit, test fixtures and their
   generators, and the VMEC and FIELDLINES downstream results. Third-party material there is
   listed in [THIRD_PARTY.md](THIRD_PARTY.md).

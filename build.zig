@@ -15,6 +15,16 @@ pub fn build(b: *std.Build) void {
         main_mod.addAnonymousImport("biot_savart.metal", .{ .root_source_file = b.path("kernels/biot_savart.metal") });
         main_mod.addCSourceFile(.{ .file = b.path("src/metal_bridge.m"), .flags = &.{"-fobjc-arc"} });
         main_mod.addIncludePath(b.path("src"));
+        // Zig finds the SDK by itself only for the native target; an explicit
+        // target such as aarch64-macos.13.0 (used for release binaries, so
+        // they run on older macOS) needs its frameworks and libc pointed to.
+        if (!target.query.isNative()) {
+            if (std.zig.system.darwin.getSdk(b.allocator, b.graph.io, &target.result)) |sdk| {
+                main_mod.addSystemFrameworkPath(.{ .cwd_relative = b.pathJoin(&.{ sdk, "System/Library/Frameworks" }) });
+                main_mod.addSystemIncludePath(.{ .cwd_relative = b.pathJoin(&.{ sdk, "usr/include" }) });
+                main_mod.addLibraryPath(.{ .cwd_relative = b.pathJoin(&.{ sdk, "usr/lib" }) });
+            }
+        }
         main_mod.linkFramework("Metal", .{});
         main_mod.linkFramework("Foundation", .{});
         main_mod.linkFramework("CoreFoundation", .{});
