@@ -130,6 +130,8 @@ but meaningless, as it is in legacy.
 - `src/`, `kernels/`: the program and its Metal and CUDA kernels.
 - `tests/`: comparison tool, gate scripts and the mock CUDA driver.
 - `tools/colab_cuda.ipynb`: CUDA gate and benchmark on a Google Colab GPU.
+- `.github/workflows/`: CI on every push; `release.yml` builds and publishes the binaries when a
+  `v*` tag is pushed (procedure in spec section 6).
 - `reference/`: legacy `xgrid` outputs at a pinned STELLOPT commit, test fixtures and their
   generators, and the VMEC and FIELDLINES downstream results. Third-party material there is
   listed in [THIRD_PARTY.md](THIRD_PARTY.md).
