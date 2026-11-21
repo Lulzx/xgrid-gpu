@@ -1,7 +1,8 @@
 # Third-party material
 
-Some files under `reference/` come from, or are derived from, other projects. Both are under the
-MIT licence; their copyright notices are reproduced here as that licence requires.
+xgrid-gpu itself is under the MIT licence ([LICENSE](LICENSE)). Some files under `reference/`
+come from, or are derived from, two other projects, both also under the MIT licence; their
+copyright notices are reproduced here as that licence requires.
 
 ## STELLOPT
 

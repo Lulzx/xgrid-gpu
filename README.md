@@ -85,3 +85,8 @@ but meaningless, as it is in legacy.
 - `reference/`: legacy `xgrid` outputs at a pinned STELLOPT commit, test fixtures and their
   generators, and the VMEC and FIELDLINES downstream results. Third-party material there is
   listed in [THIRD_PARTY.md](THIRD_PARTY.md).
+
+## Licence
+
+MIT; see [LICENSE](LICENSE). Material under `reference/` from STELLOPT and simsopt keeps its own
+MIT notices, reproduced in [THIRD_PARTY.md](THIRD_PARTY.md).
