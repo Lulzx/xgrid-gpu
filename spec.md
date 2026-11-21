@@ -1,7 +1,7 @@
 # Technical Specification: `xgrid-gpu`
 **GPU Drop-In Replacement for STELLOPT `MAKEGRID` (`xgrid`)**
 
-**Version:** 0.9.0 (release candidate)  
+**Version:** 0.9.1 (release candidate)  
 **Status:** all milestones implemented. CPU and Metal backends pass every gate on an Apple M4 Pro, and the downstream gate passes with VMEC and FIELDLINES. The CUDA backend passes every gate on an NVIDIA A100 and an NVIDIA T4 (Google Colab), with `fp64` bit-identical to the CPU reference. Before 1.0: the `auto` decision for cards with reduced `fp64` rate (§8)
 **Backends:** CPU reference (`fp64`), CUDA (`fp64` or `ds`), Apple Metal (`ds` or `fp32`)
 **Implementation language:** Zig (pinned toolchain version in `build.zig.zon`) host + `.cu` / `.metal` kernels
@@ -421,7 +421,7 @@ xgrid-gpu/
 
 Unit tests live beside the code they test (`zig build test`; CI runs them with `--release=safe`), including the analytical checks of §7.1 in `cpu_ref.zig`.
 
-**Releasing.** Set the version in `build.zig.zon` and `pub const version` in `src/main.zig`, move the "Unreleased" entries in §10 under the new version, commit and push, wait for CI, then tag and push the tag (`git tag -a vX.Y.Z -m "xgrid-gpu X.Y.Z" && git push origin vX.Y.Z`). `release.yml` reruns the checks, builds `xgrid-gpu-linux-x86_64`, `xgrid-gpu-linux-aarch64` and `xgrid-gpu-macos-arm64`, refuses to publish if the macOS binary's `--version` does not match the tag, and publishes them with `SHA256SUMS`. The README's download command uses `releases/latest`, so it follows the newest release. 0.9.0 was released this way.
+**Releasing.** Set the version in `build.zig.zon` and `pub const version` in `src/main.zig`, move the "Unreleased" entries in §10 under the new version, commit and push, wait for CI, then tag and push the tag (`git tag -a vX.Y.Z -m "xgrid-gpu X.Y.Z" && git push origin vX.Y.Z`). `release.yml` reruns the checks, builds `xgrid-gpu-linux-x86_64`, `xgrid-gpu-linux-aarch64` and `xgrid-gpu-macos-arm64`, refuses to publish if the macOS binary's `--version` does not match the tag, and publishes them with `SHA256SUMS`. The README's download command uses `releases/latest`, so it follows the newest release. 0.9.0 and 0.9.1 were released this way.
 
 ---
 
@@ -558,7 +558,7 @@ Comparisons against `SIMSOPT` / `DESC` are optional and, if included, state grid
 1. **M0, correctness on CPU: done.** Parsers (with fuzz tests), grid and symmetry, CPU reference, CDF-2 writer, `extcur` writer. Unit tests including the analytical gate (7.1), byte-identical headers and `extcur` files, legacy parity on 14 reference cases including NCSX and W7-X, full-resolution NCSX parity, and agreement between all four invocation modes.
 2. **M1, Metal: done.** `ds` and `fp32` kernels, startup self-test, time-bounded chunked dispatch, `--device`. `tests/run_gpu.sh metal` passes on every reference case.
 3. **M2, CUDA: done.** `fp64`, `ds` and `fp32` kernels from one source; PTX built without the CUDA toolkit; `dlopen` loader; self-test; chunked dispatch; mid-run fallback. `tests/run_gpu.sh cuda` passes on every reference case on an NVIDIA A100, an NVIDIA T4 and through the mock driver, with `fp64` bit-identical to the CPU reference on all three. Linux x86-64 and arm64 builds link against glibc only.
-4. **M3, release: done.** Downstream gate passed (§7.4); write/compute overlap; benchmark tables for Apple silicon, A100 and T4 in §7.5 and the README; 0.9.0 released with Linux and macOS binaries (§6).
+4. **M3, release: done.** Downstream gate passed (§7.4); write/compute overlap; benchmark tables for Apple silicon, A100 and T4 in §7.5 and the README; released with Linux and macOS binaries since 0.9.0 (§6).
 
 **Before 1.0:** the NVIDIA runs are done (A100 and T4, §7.5). One decision remains, deliberately not yet made: what `auto` should run on cards with reduced `fp64` rate when `--precision` is not given. On the T4, `ds` is 3.4× faster than `fp64` (NCSX 2.4 s against 7.0 s) at $4 \times 10^{-11}$ of the peak field, against exactly 0 for `fp64`. Options:
 
@@ -594,20 +594,18 @@ Resolved in 0.2.2: floor guard, two-line coils and more than 99 groups confirmed
 
 ## 10. Changes
 
-### Unreleased
+### 0.9.1
 
-* CUDA backend run on an NVIDIA A100 and an NVIDIA T4 (Google Colab): every gate passes, `fp64` bit-identical to the CPU reference; benchmarks in §7.5. NCSX end to end on the A100: 1.1 s in `fp64`.
-* Release binaries for Linux x86-64 and arm64 (glibc 2.17) and macOS arm64 (macOS 13), built and published by `release.yml` on a version tag; `build.zig` locates the macOS SDK for non-native macOS targets (§4.5, §6).
-* `tools/colab_cuda.ipynb`, runnable in the browser or with the Colab CLI (README); executed A100 and T4 notebooks in `reference/nvidia/`.
+* NetCDF reader: header counts (dimensions, variables, dimensions per variable) are checked against the bytes left before anything is allocated. A corrupt count used to request tens of GB; Release builds survived because the memory was never touched, Debug builds were killed by the OS in the unit tests. Regression test added.
+* CUDA backend run on an NVIDIA A100 and an NVIDIA T4 (Google Colab): every gate passes, `fp64` bit-identical to the CPU reference; benchmarks in §7.5. NCSX end to end on the A100: 1.1 s in `fp64`. Executed notebooks in `reference/nvidia/`; README documents running the notebook with the Colab CLI.
 * `auto` on cards with reduced `fp64` rate: options written up in §8; behaviour unchanged.
 * CuMetal compatibility tested and its blockers recorded (§4.5).
 * Known issue recorded: CUDA start-up time (Q5).
-* NetCDF reader: header counts (dimensions, variables, dimensions per variable) are checked against the bytes left before anything is allocated. A corrupt count used to request tens of GB; Release builds survived because the memory was never touched, Debug builds were killed by the OS in the unit tests. Regression test added.
-* MIT licence; README speedup column and download section.
 
 ### 0.9.0
 
-* Released as v0.9.0 with binaries; `--version` and `build.zig.zon` corrected to 0.9.0 (they said 0.2.2) in the release commit.
+* Released as v0.9.0 with binaries for Linux x86-64 and arm64 (glibc 2.17) and macOS arm64 (macOS 13), built and published by `release.yml` on a version tag; `build.zig` locates the macOS SDK for non-native macOS targets (§4.5, §6). `--version` and `build.zig.zon` corrected to 0.9.0 (they said 0.2.2).
+* MIT licence; `tools/colab_cuda.ipynb`; README speedup column and download section.
 * M2 implemented: CUDA backend (`fp64`, `ds`, `fp32`), PTX via clang without the CUDA toolkit, `dlopen` loader, mock driver and `tests/run_gpu.sh` (replaces `run_metal.sh`). Untested on NVIDIA hardware.
 * Backend selection rewritten: `auto` prefers CUDA `fp64`, never Metal for `fp64`, and falls back to the CPU at startup or mid-run.
 * Group writes overlapped with the next group's compute; `--device` implemented for Metal and CUDA.

@@ -65,7 +65,7 @@ const WriteJob = struct {
     }
 };
 
-pub const version = "0.9.0";
+pub const version = "0.9.1";
 
 const help_text =
     \\xgrid-gpu {s}: vacuum magnetic field of filamentary coils on a cylindrical grid.

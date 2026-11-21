@@ -1,6 +1,6 @@
 .{
     .name = .xgrid_gpu,
-    .version = "0.9.0",
+    .version = "0.9.1",
     .fingerprint = 0x9e44acc8572db55d,
     .minimum_zig_version = "0.17.1",
     .dependencies = .{},

@@ -6,7 +6,7 @@ Replacement for STELLOPT `MAKEGRID` (`xgrid`): computes the vacuum magnetic fiel
 coils on a cylindrical grid and writes `mgrid_<ext>.nc` and `extcur.<ext>` that VMEC, FIELDLINES
 and the rest of STELLOPT read unchanged.
 
-Status: release candidate (0.9.0). The CPU backend (fp64) and the Apple Metal backend
+Status: release candidate (0.9.1). The CPU backend (fp64) and the Apple Metal backend
 (double-single and single precision) pass every gate, including free-boundary VMEC and
 FIELDLINES runs on the output. The CUDA backend (fp64, double-single, single) passes every gate
 on an NVIDIA A100 and an NVIDIA T4, with fp64 bit-identical to the CPU backend. See [spec.md](spec.md) for the design, measurements and open
