@@ -9,21 +9,28 @@ and the rest of STELLOPT read unchanged.
 Status: release candidate (0.9.0). The CPU backend (fp64) and the Apple Metal backend
 (double-single and single precision) pass every gate, including free-boundary VMEC and
 FIELDLINES runs on the output. The CUDA backend (fp64, double-single, single) passes every gate
-through a mock driver but **has not yet been run on an NVIDIA GPU**. See [spec.md](spec.md) for
-the design, measurements and open questions. To run the CUDA gate and benchmark on a Colab GPU,
-open [`tools/colab_cuda.ipynb`](https://colab.research.google.com/github/Lulzx/xgrid-gpu/blob/main/tools/colab_cuda.ipynb).
+on an NVIDIA T4, with fp64 bit-identical to the CPU backend; it has not yet been measured on a
+data-centre GPU (A100, H100). See [spec.md](spec.md) for the design, measurements and open
+questions. To run the CUDA gate and benchmark on a Colab GPU, open
+[`tools/colab_cuda.ipynb`](https://colab.research.google.com/github/Lulzx/xgrid-gpu/blob/main/tools/colab_cuda.ipynb).
 
-201 x 201 x 36 grid, stellarator symmetry, Apple M4 Pro, end to end:
+201 x 201 x 36 grid, stellarator symmetry, end to end. Speedup is against legacy on the M4 Pro.
 
-| Program | NCSX | W7-X | Speedup (NCSX / W7-X) | Difference from fp64 |
-| --- | --- | --- | --- | --- |
-| legacy `xgrid`, one process | 79 s | 71 s | 1x | |
-| `xgrid-gpu`, CPU, 12 threads (default on macOS) | 2.1 s | 1.9 s | 38x / 37x | reference |
-| `xgrid-gpu --backend metal` (double-single) | 2.3 s | 2.1 s | 34x / 34x | up to 4e-11 |
-| `xgrid-gpu --precision fp32` (Metal) | 0.37 s | 0.35 s | 210x / 200x | up to 1e-3 |
+| Program | Hardware | NCSX | W7-X | Speedup (NCSX / W7-X) | Difference from fp64 |
+| --- | --- | --- | --- | --- | --- |
+| legacy `xgrid`, one process | Apple M4 Pro | 79 s | 71 s | 1x | |
+| `xgrid-gpu`, CPU, 12 threads (default on macOS) | Apple M4 Pro | 2.1 s | 1.9 s | 38x / 37x | reference |
+| `xgrid-gpu --backend metal` (double-single) | Apple M4 Pro | 2.3 s | 2.1 s | 34x / 34x | up to 4e-11 |
+| `xgrid-gpu --precision fp32` (Metal) | Apple M4 Pro | 0.37 s | 0.35 s | 210x / 200x | up to 1e-3 |
+| `xgrid-gpu --backend cuda` (fp64, default) | NVIDIA T4 | 7.0 s | 6.4 s | 11x / 11x | 0 (bit-identical) |
+| `xgrid-gpu --backend cuda --precision ds` | NVIDIA T4 | 2.4 s | 2.2 s | 33x / 32x | up to 4e-11 |
+| `xgrid-gpu --backend cuda --precision fp32` | NVIDIA T4 | 1.5 s | 1.1 s | 53x / 65x | up to 1e-3 |
 
 On Apple silicon the GPU in double-single is no faster than the CPU in fp64, so the CPU is the
-default; single precision is for quick exploratory grids.
+default; single precision is for quick exploratory grids. The T4, like other consumer and
+inference cards, runs native fp64 at 1/32 of its fp32 rate, so there double-single is 3x faster
+than fp64 at an accuracy of 4e-11; data-centre GPUs run fp64 at half rate. T4 times are from a
+Google Colab VM (spec section 7.5).
 
 ## Download
 

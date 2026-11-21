@@ -2,7 +2,7 @@
 **GPU Drop-In Replacement for STELLOPT `MAKEGRID` (`xgrid`)**
 
 **Version:** 0.9.0 (release candidate)  
-**Status:** all milestones implemented. CPU and Metal backends pass every gate on an Apple M4 Pro, and the downstream gate passes with VMEC and FIELDLINES. The CUDA backend passes every gate through a mock driver that runs its kernels on the CPU, but has **not been run on an NVIDIA GPU**; that is the one remaining step before 1.0 (§8)
+**Status:** all milestones implemented. CPU and Metal backends pass every gate on an Apple M4 Pro, and the downstream gate passes with VMEC and FIELDLINES. The CUDA backend passes every gate on an NVIDIA T4 (Google Colab), with `fp64` bit-identical to the CPU reference; a data-centre GPU is the one remaining measurement before 1.0 (§8)
 **Backends:** CPU reference (`fp64`), CUDA (`fp64` or `ds`), Apple Metal (`ds` or `fp32`)
 **Implementation language:** Zig (pinned toolchain version in `build.zig.zon`) host + `.cu` / `.metal` kernels
 **Runtime dependencies:** libc and the OS/driver-provided GPU runtime only (no `libnetcdf`, `libhdf5`, MPI, Python, or NVRTC)
@@ -497,6 +497,21 @@ What this says about Apple silicon:
 * **The 500× target is met only in a narrow sense:** legacy single-process to Metal `fp32` is about 210×, and to either full-precision path about 35–40×. Reaching 500× at full precision needs roughly $10^{11}$ `fp64` interactions per second, which is data-centre GPU territory (M2).
 * Not implemented: running the CPU and GPU concurrently on disjoint points, which should roughly halve the full-precision time on this machine (Q2, §9).
 
+**Measured (NVIDIA T4, Google Colab, driver 580.82.07, 2-vCPU Xeon @ 2.0 GHz, same cases):**
+
+| Program | NCSX: time | W7-X: time | Kernel interactions per second | Difference from CPU reference (NCSX / W7-X) |
+| --- | --- | --- | --- | --- |
+| `xgrid-gpu` CPU `fp64`, 2 threads | 44 s | 39 s | $3.1 \times 10^8$ | reference |
+| `xgrid-gpu` CUDA `fp64` | 7.0 s | 6.4 s | $2.1 \times 10^9$ | 0 / 0 (bit-identical) |
+| `xgrid-gpu` CUDA `ds` | 2.4 s | 2.2 s | $7.2 \times 10^9$ | $2.6 \times 10^{-12}$ / $4.0 \times 10^{-11}$ |
+| `xgrid-gpu` CUDA `fp32` | 1.5 s | 1.1 s | $5.5 \times 10^{10}$ / $6.0 \times 10^{10}$ | $6.3 \times 10^{-4}$ / $1.1 \times 10^{-3}$ |
+
+Run with `tools/colab_cuda.ipynb` at commit `4be1968`; the executed notebook is in `reference/nvidia/t4-colab/`. Each GPU configuration ran twice and the table gives the faster run. The two runs differ mainly in the write, which on the Colab disk took between 0.3 and 3.6 s for the same file; setup, which includes creating the CUDA context and loading the PTX, is about 0.4 s and differs by 0.1 s between the first run and the second. `tests/run_gpu.sh cuda` passes on the same VM on all 14 reference cases, `fp64` with difference exactly 0.
+
+* **The PTX path is correct on real hardware.** `fp64` reproduces the CPU reference bit for bit, as it did through the mock driver; `ds` and `fp32` match their Metal accuracies.
+* **On the T4, `ds` is 3.4× faster than `fp64`** at the kernel ($7.2 \times 10^9$ against $2.1 \times 10^9$ interactions per second). The T4's native `fp64` runs at 1/32 of its `fp32` rate; this is the consumer-card case the `auto` question in §8 anticipated.
+* **`fp32` is limited by setup and write, not compute**: its kernels take 0.2–0.3 s of the 1.1–1.5 s.
+
 **Legacy baseline detail.** Legacy `xgrid` at the pinned commit (gfortran 16.2.0, `-O2 -march=native`, one process) on an Apple M4 Pro, `coils.NCSX`, `S` mode, symmetry on, `201 × 201 × 36`: **79 s** wall, 52 MB peak memory, 349 MB output. That is about $1.35 \times 10^{10}$ interactions (727,218 computed points × about 18,600 segments) at $1.7 \times 10^8$ interactions per second. It is a single run with other light load on the machine, so treat it as ±10%. v0.1's "~400 s" figure does not hold on this hardware, so a 500× speedup means about 160 ms end to end and requires roughly $10^{11}$ interactions per second from the kernel.
 
 Targets are set after the first `xgrid-gpu` measurement. The README table reports, per case and device:
@@ -515,10 +530,10 @@ Comparisons against `SIMSOPT` / `DESC` are optional and, if included, state grid
 
 1. **M0, correctness on CPU: done.** Parsers (with fuzz tests), grid and symmetry, CPU reference, CDF-2 writer, `extcur` writer. Unit tests including the analytical gate (7.1), byte-identical headers and `extcur` files, legacy parity on 14 reference cases including NCSX and W7-X, full-resolution NCSX parity, and agreement between all four invocation modes.
 2. **M1, Metal: done.** `ds` and `fp32` kernels, startup self-test, time-bounded chunked dispatch, `--device`. `tests/run_gpu.sh metal` passes on every reference case.
-3. **M2, CUDA: done, except running on NVIDIA hardware.** `fp64`, `ds` and `fp32` kernels from one source; PTX built without the CUDA toolkit; `dlopen` loader; self-test; chunked dispatch; mid-run fallback. `tests/run_gpu.sh cuda` passes on every reference case through the mock driver, with `fp64` bit-identical to the CPU reference. Linux x86-64 and arm64 builds link against glibc only.
+3. **M2, CUDA: done.** `fp64`, `ds` and `fp32` kernels from one source; PTX built without the CUDA toolkit; `dlopen` loader; self-test; chunked dispatch; mid-run fallback. `tests/run_gpu.sh cuda` passes on every reference case on an NVIDIA T4 and through the mock driver, with `fp64` bit-identical to the CPU reference on both. Linux x86-64 and arm64 builds link against glibc only.
 4. **M3, release: done for Apple silicon.** Downstream gate passed (§7.4); write/compute overlap; benchmark table in §7.5 and the README.
 
-**Before 1.0:** run `tests/run_gpu.sh cuda` (without `XGRID_LIBCUDA`) and the NCSX benchmark on at least one NVIDIA GPU, ideally one consumer card and one data-centre card, and record the results in §7.5. Then decide whether `auto` should keep preferring CUDA `fp64` on consumer cards, whose `fp64` rate is about 1/64 of `fp32`, or prefer CUDA `ds` there.
+**Before 1.0:** the consumer-class run is done (T4, §7.5). Run the gate and the NCSX benchmark on a data-centre card (A100 or H100) and record it in §7.5. Then decide whether `auto` should keep preferring CUDA `fp64` on cards with reduced `fp64` rate, or prefer CUDA `ds` there: on the T4, `ds` is 3.4× faster at $4 \times 10^{-11}$ accuracy.
 
 ---
 
@@ -526,7 +541,7 @@ Comparisons against `SIMSOPT` / `DESC` are optional and, if included, state grid
 
 | # | Question | Why it matters |
 | --- | --- | --- |
-| Q1 | CUDA backend on real NVIDIA hardware: correctness of the PTX path, performance, and the `auto` choice between `fp64` and `ds` on consumer cards. | The one unverified component (§8). |
+| Q1 | CUDA performance on a data-centre GPU, and the `auto` choice between `fp64` and `ds` on cards with reduced `fp64` rate. Correctness of the PTX path is confirmed on a T4 (§7.5). | The headline full-precision number, and the default on consumer cards (§8). |
 | Q2 | Should `xgrid-gpu` split points between CPU and GPU when both are available? | The only identified route to a faster full-precision result on Apple silicon. Mixes `fp64` and `ds` points in one file, each within tolerance. |
 | Q3 | Metal results are from one machine (M4 Pro). Other Apple GPUs are unmeasured. | Whether `auto` should ever prefer Metal. |
 | Q4 | Quoted group names with spaces are parsed as one item here; legacy's handling was not run. Is `coils.NCSX` identical to `coils.c09r00`? Is the MPI build of legacy in scope for the benchmark? | Minor parity and benchmark details. |
@@ -544,6 +559,11 @@ Resolved in 0.2.2: floor guard, two-line coils and more than 99 groups confirmed
 ---
 
 ## 10. Changes
+
+### Unreleased
+
+* CUDA backend run on an NVIDIA T4 (Google Colab): every gate passes, `fp64` bit-identical to the CPU reference; benchmark in §7.5.
+* Release binaries for Linux x86-64 and arm64 (glibc 2.17) and macOS arm64 (macOS 13); `tools/colab_cuda.ipynb`.
 
 ### 0.9.0
 
